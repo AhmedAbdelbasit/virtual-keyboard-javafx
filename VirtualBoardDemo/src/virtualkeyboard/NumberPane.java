@@ -33,9 +33,11 @@ public class NumberPane extends Pane{
         paneWidth = width;
         
         vbox = new VBox();
+        vbox.setSpacing(2);
         hbox = new HBox[4];
         for (int i=0 ; i<4 ; i++){
             hbox[i] = new HBox();
+            hbox[i].setSpacing(2);
         }
         
         txtTemp = tempText;
@@ -98,5 +100,19 @@ public class NumberPane extends Pane{
     
     public void returnText(){
         parent.returnText();
+    }
+    
+    public void setKeyboardSize(double width, double height){
+        for(int i=0 ; i<NUM_OF_BUTTONS ; i++){
+            buttons[i].setPrefWidth(width);
+        }
+        buttons[ZERO].setPrefWidth(2*width+2*2);
+        buttons[ENTER].setPrefWidth(2*width+2*2);
+        
+        for(int i=0 ; i<NUM_OF_BUTTONS ; i++){
+            buttons[i].setPrefHeight(height);
+        }
+        buttons[ZERO].setPrefHeight(height);
+        buttons[ENTER].setPrefHeight(height);
     }
 }

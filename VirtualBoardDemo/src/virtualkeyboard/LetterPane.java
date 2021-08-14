@@ -11,6 +11,8 @@ public class LetterPane extends Pane{
     
     private final VirtualKeyboard parent;
     
+    private Label tempLabel;
+            
     private final double paneWidth;
     private final VBox vbox;
     private final HBox[] hbox;
@@ -45,9 +47,11 @@ public class LetterPane extends Pane{
         paneWidth = width;
         
         vbox = new VBox();
+        vbox.setSpacing(2);
         hbox = new HBox[4];
         for (int i=0 ; i<4 ; i++){
             hbox[i] = new HBox();
+            hbox[i].setSpacing(2);
         }
         
         txtTemp = tempText;
@@ -125,9 +129,9 @@ public class LetterPane extends Pane{
         }
         hbox[0].getChildren().add(buttons[BACK]);
         
-        Label l = new Label();
-        l.setPrefWidth(paneWidth/20);
-        hbox[1].getChildren().add(l);
+        tempLabel = new Label();
+        tempLabel.setPrefWidth(paneWidth/20);
+        hbox[1].getChildren().add(tempLabel);
         for(int i=0 ; i<line2.length ; i++){
             hbox[1].getChildren().add(buttons[(int)line2[i]-'a']);
         }
@@ -152,4 +156,22 @@ public class LetterPane extends Pane{
     public void returnText(){
         parent.returnText();
     }
+    
+    public void setKeyboardSize(double width, double height){
+        
+        for(int i=0 ; i<NUM_OF_BUTTONS ; i++){
+            buttons[i].setPrefWidth(width);
+        }
+        buttons[SPACE].setPrefWidth(7*width+8*2);
+        buttons[ENTER].setPrefWidth(width*1.5);
+        tempLabel.setPrefWidth(width/2);
+        
+        for(int i=0 ; i<NUM_OF_BUTTONS ; i++){
+            buttons[i].setPrefHeight(height);
+        }
+        buttons[SPACE].setPrefHeight(height);
+        buttons[ENTER].setPrefHeight(height);
+        
+    }
+    
 }

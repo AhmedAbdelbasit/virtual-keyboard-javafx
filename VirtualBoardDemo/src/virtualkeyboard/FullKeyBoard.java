@@ -31,6 +31,8 @@ public class FullKeyBoard extends Pane implements VirtualKeyboard{
         
         getChildren().add(layout);
         hide();
+        
+        this.setStyle("-fx-background-color: #000000");
     }
     
     @Override
@@ -53,5 +55,11 @@ public class FullKeyBoard extends Pane implements VirtualKeyboard{
         destination.setText(txt.getText());
         txt.setText("");
         hide();
+    }
+    
+    public void setKeyboardWidth(double width){
+        double w = width*3.2/5.0;
+        k.setKeyboardSize(w/10, w/20);
+        n.setKeyboardSize(w/10, w/20);
     }
 }
