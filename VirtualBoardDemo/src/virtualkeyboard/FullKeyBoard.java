@@ -33,8 +33,8 @@ public class FullKeyBoard extends Pane implements VirtualKeyboard{
         hide();
     }
     
+    @Override
     public void setDestination(TextField destination){
-//        System.out.println(k);
         this.destination = destination;
     }
     

@@ -1,7 +1,6 @@
 package virtualkeyboard;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -9,13 +8,12 @@ import javafx.scene.layout.VBox;
 
 public class NumberPane extends Pane{
     
-    private VirtualKeyboard parent;
+    private final VirtualKeyboard parent;
     
-    private double paneWidth;
+    private final double paneWidth;
     private final VBox vbox;
     private final HBox[] hbox;
     private final TextField txtTemp;
-//    private TextField destination;
     private final Button[] buttons;
     
     private final char[] line1 = "789".toCharArray();
@@ -68,7 +66,6 @@ public class NumberPane extends Pane{
         });
         
         getChildren().add(vbox);
-//        vbox.getChildren().add(txtTemp);
         for(int i=0 ; i<4 ; i++){
             vbox.getChildren().add(hbox[i]);
         }
@@ -76,13 +73,8 @@ public class NumberPane extends Pane{
     }
     
     public void press(String text){
-        // handle backspace
         txtTemp.setText(txtTemp.getText() + text);
     }
-    
-//    public void setDestination(TextField textField){
-//        this.destination = textField;
-//    }
     
     private void setButtonsOrder(){
         for(int i=0 ; i<line1.length ; i++){
@@ -99,7 +91,6 @@ public class NumberPane extends Pane{
             hbox[2].getChildren().add(buttons[(int)line3[i]-'0']);
         }
         hbox[2].getChildren().add(buttons[DOT]);
-        
         
         hbox[3].getChildren().add(buttons[ZERO]);
         hbox[3].getChildren().add(buttons[ENTER]);

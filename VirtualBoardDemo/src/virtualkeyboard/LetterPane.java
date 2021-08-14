@@ -9,9 +9,9 @@ import javafx.scene.layout.VBox;
 
 public class LetterPane extends Pane{
     
-    private VirtualKeyboard parent;
+    private final VirtualKeyboard parent;
     
-    private double paneWidth;
+    private final double paneWidth;
     private final VBox vbox;
     private final HBox[] hbox;
     private final TextField txtTemp;
@@ -51,8 +51,6 @@ public class LetterPane extends Pane{
         }
         
         txtTemp = tempText;
-//        txtTemp.setPrefWidth(paneWidth);
-        
         
         buttons = new Button[NUM_OF_BUTTONS];
         for(int i=0 ; i<NUM_OF_BUTTONS ; i++){
@@ -118,13 +116,8 @@ public class LetterPane extends Pane{
     }
     
     public void press(String text){
-        // handle backspace
         txtTemp.setText(txtTemp.getText() + text);
     }
-    
-//    public void setDestination(TextField textField){
-//        this.destination = textField;
-//    }
     
     private void setButtonsOrder(){
         for(int i=0 ; i<line1.length ; i++){
