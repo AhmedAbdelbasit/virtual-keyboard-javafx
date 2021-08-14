@@ -27,7 +27,7 @@ public class FullKeyBoard extends Pane implements VirtualKeyboard{
         
         panes.setSpacing(10);
         panes.getChildren().add(k);
-//        panes.getChildren().add(n);
+        panes.getChildren().add(n);
         
         getChildren().add(layout);
         hide();

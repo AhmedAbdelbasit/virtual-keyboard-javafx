@@ -22,10 +22,13 @@ public class NumberPane extends Pane{
     private final char[] line2 = "456".toCharArray();
     private final char[] line3 = "123".toCharArray();
         
-    private final int DOT = 10;
     private final int ZERO = 0;
-        
-    private final int NUM_OF_BUTTONS = 11;
+    private final int DOT = 10;
+    private final int PLUS = 11;
+    private final int MULTIPLY = 12;
+    private final int ENTER = 13;
+    
+    private final int NUM_OF_BUTTONS = 14;
     
     public NumberPane(FullKeyBoard parent, double width, TextField tempText){
         this.parent = parent;
@@ -45,17 +48,24 @@ public class NumberPane extends Pane{
             buttons[i].setPrefWidth(paneWidth/3);
         }
         buttons[ZERO].setPrefWidth(2*paneWidth/3);
+        buttons[ENTER].setPrefWidth(2*paneWidth/3);
         
         for(int i=0 ; i<10; i++){
             buttons[i].setText(i+"");
         }
-        for(int i=0 ; i<NUM_OF_BUTTONS ; i++){
+        buttons[DOT].setText(".");
+        buttons[PLUS].setText("+");
+        buttons[MULTIPLY].setText("*");
+        buttons[ENTER].setText("⏎");
+        
+        for(int i=0 ; i<ENTER ; i++){
             buttons[i].setOnAction(e->{
                 press(((Button)e.getSource()).getText());
             });
         }
-               
-        buttons[DOT].setText(".");
+        buttons[ENTER].setOnAction(e->{
+            returnText();
+        });
         
         getChildren().add(vbox);
 //        vbox.getChildren().add(txtTemp);
@@ -78,18 +88,24 @@ public class NumberPane extends Pane{
         for(int i=0 ; i<line1.length ; i++){
             hbox[0].getChildren().add(buttons[(int)line1[i]-'0']);
         }
+        hbox[0].getChildren().add(buttons[MULTIPLY]);
+        
         for(int i=0 ; i<line2.length ; i++){
             hbox[1].getChildren().add(buttons[(int)line2[i]-'0']);
         }
+        hbox[1].getChildren().add(buttons[PLUS]);
+        
         for(int i=0 ; i<line3.length ; i++){
             hbox[2].getChildren().add(buttons[(int)line3[i]-'0']);
         }
+        hbox[2].getChildren().add(buttons[DOT]);
+        
         
         hbox[3].getChildren().add(buttons[ZERO]);
-        hbox[3].getChildren().add(buttons[DOT]);
+        hbox[3].getChildren().add(buttons[ENTER]);
     }
     
-    public void returnText(TextField dest){
+    public void returnText(){
         parent.returnText();
     }
 }
